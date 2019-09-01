@@ -1,0 +1,15 @@
+//74ls244与74ls273:74LS244的IN0~IN7接开关读取状态；74LS273的00~07接发光二极管显示
+
+              ORG 0000H      
+	 LOOP:MOV DPTR,#7FFFH
+	      MOVX A,@DPTR
+	      MOV DPTR,#0FFFFH
+	      MOVX @DPTR,A
+		  ACALL DELAY
+	      SJMP LOOP
+	DELAY:MOV R0,#200
+	DEL1: MOV R1,#250
+	DEL2: DJNZ R1,DEL2
+	      DJNZ R0,DEL1
+		  RET
+		  END
